@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arma 3 Mod ID Extractor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            margin-bottom: 10px;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Arma 3 Mod ID Extractor</h1>
+
+    <label for="fileInput">Load .html File:</label>
+    <input type="file" id="fileInput" accept=".html">
+
+    <h3>Options:</h3>
+    <input type="checkbox" id="includeAt" onclick="updateOutput()"> Include '@' before each entry<br>
+    <input type="checkbox" id="showNames" checked onclick="updateOutput()"> Show Names (instead of only IDs)<br>
+
+    <h3>Output Format:</h3>
+    <input type="radio" name="format" value="newline" checked onclick="updateOutput()"> Newline<br>
+    <input type="radio" name="format" value="semicolon" onclick="updateOutput()"> Semicolon<br>
+    <input type="radio" name="format" value="comma" onclick="updateOutput()"> Comma<br>
+
+    <h3>Extracted Output:</h3>
+    <textarea id="output" readonly>Output will appear here...</textarea>
+
+    <h3>Sanitized Mods:</h3>
+    <textarea id="sanitizedMods" readonly>No mods required sanitization.</textarea>
+
+    <button onclick="downloadOutput()">Save List</button>
+
+    <script>
+        let extractedData = [];
+        let sanitizedMods = [];
+
+        document.getElementById('fileInput').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    processFile(e.target.result);
+                };
+                reader.readAsText(file);
+            }
+        });
+
+        function sanitizeFilename(name) {
+            const invalidChars = /[<>:"/\\|?*]/g;
+            const unescapedName = name.replace(/&amp;/g, '&');
+            return unescapedName.replace(invalidChars, '_');
+        }
+
+        function processFile(content) {
+            extractedData = [];
+            sanitizedMods = [];
+            const lines = content.split('\n');
+            let displayName = '';
+
+            lines.forEach(line => {
+                if (line.includes('data-type="DisplayName"')) {
+                    displayName = line.split('>')[1].split('<')[0];
+                }
+                if (line.includes('?id=')) {
+                    const id = line.match(/\?id=(\d+)/)[1];
+                    const sanitizedName = sanitizeFilename(displayName);
+                    if (sanitizedName !== displayName && !displayName.includes('&')) {
+                        sanitizedMods.push(`Original: ${displayName}\nSanitized: ${sanitizedName}`);
+                    }
+                    extractedData.push({ name: sanitizedName, id });
+                }
+            });
+
+            updateOutput();
+            updateSanitizedMods();
+        }
+
+        function updateOutput() {
+            const includeAt = document.getElementById('includeAt').checked;
+            const showNames = document.getElementById('showNames').checked;
+            const format = document.querySelector('input[name="format"]:checked').value;
+
+            let output = extractedData.map(entry => {
+                let value = showNames ? entry.name : entry.id;
+                return includeAt ? `@${value}` : value;
+            });
+
+            if (format === 'semicolon') {
+                output = output.join(';');
+            } else if (format === 'comma') {
+                output = output.join(',');
+            } else {
+                output = output.join('\n');
+            }
+
+            document.getElementById('output').value = output;
+        }
+
+        function updateSanitizedMods() {
+            const sanitizedModsText = sanitizedMods.length ? sanitizedMods.join('\n\n') : "No mods required sanitization.";
+            document.getElementById('sanitizedMods').value = sanitizedModsText;
+        }
+
+        function downloadOutput() {
+            const output = document.getElementById('output').value;
+            const blob = new Blob([output], { type: 'text/plain' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'mod_list.txt';
+            link.click();
+        }
+    </script>
+</body>
+</html>
