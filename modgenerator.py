@@ -175,7 +175,7 @@ instructions = tk.Label(frame, text=(
 instructions.grid(row=7, column=0, columnspan=4, padx=5, pady=10)
 
 # Author signature
-author_label = tk.Label(root, text="Developed by Waldie", font=("Arial", 10, "italic"))
+author_label = tk.Label(root, text="Developed by Waldo", font=("Arial", 10, "italic"))
 author_label.pack(pady=5)
 
 # Initialize extracted data variable
