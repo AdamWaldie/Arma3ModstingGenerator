@@ -17,6 +17,11 @@
         .hidden {
             display: none;
         }
+        .signature {
+            margin-top: 20px;
+            font-style: italic;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -41,6 +46,8 @@
     <textarea id="sanitizedMods" readonly>No mods required sanitization.</textarea>
 
     <button onclick="downloadOutput()">Save List</button>
+
+    <div class="signature">Developed by Waldo</div>
 
     <script>
         let extractedData = [];
