@@ -22,6 +22,9 @@
             font-style: italic;
             text-align: center;
         }
+        label {
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -31,13 +34,13 @@
     <input type="file" id="fileInput" accept=".html">
 
     <h3>Options:</h3>
-    <input type="checkbox" id="includeAt" onclick="updateOutput()"> Include '@' before each entry<br>
-    <input type="checkbox" id="showNames" checked onclick="updateOutput()"> Show Names (instead of only IDs)<br>
+    <label><input type="checkbox" id="includeAt" onclick="updateOutput()"> Include '@' before each entry</label><br>
+    <label><input type="checkbox" id="showNames" checked onclick="updateOutput()"> Show Names (instead of only IDs)</label><br>
 
     <h3>Output Format:</h3>
-    <input type="radio" name="format" value="newline" checked onclick="updateOutput()"> Newline<br>
-    <input type="radio" name="format" value="semicolon" onclick="updateOutput()"> Semicolon<br>
-    <input type="radio" name="format" value="comma" onclick="updateOutput()"> Comma<br>
+    <label><input type="radio" name="format" value="newline" checked onclick="updateOutput()"> Newline</label><br>
+    <label><input type="radio" name="format" value="semicolon" onclick="updateOutput()"> Semicolon</label><br>
+    <label><input type="radio" name="format" value="comma" onclick="updateOutput()"> Comma</label><br>
 
     <h3>Extracted Output:</h3>
     <textarea id="output" readonly>Output will appear here...</textarea>
