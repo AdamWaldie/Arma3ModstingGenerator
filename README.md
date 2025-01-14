@@ -4,7 +4,7 @@ A tool for extracting and sanitizing Arma 3 mod IDs and names from preset `.html
 
 I provide a downloadable Python version, as well as a web app version for ease of use.
 
-If you set up your server to save the mod folder as the workshop ID of the mod, you can also use this tool to generate a mod load order comptabale with that setup for quick, repeatable access. 
+If you set up your server to save the mod folder as the workshop ID of the mod, you can also use this tool to generate a mod load order compatable with that setup for quick, repeatable access. 
 
 This stops the random folder rename bullshit commonly associated with A3 modding.
 

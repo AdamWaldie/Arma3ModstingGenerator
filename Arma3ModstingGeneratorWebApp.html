@@ -55,6 +55,7 @@
     <script>
         let extractedData = [];
         let sanitizedMods = [];
+        let isDataLoaded = false;
 
         document.getElementById('fileInput').addEventListener('change', function(event) {
             const file = event.target.files[0];
@@ -62,6 +63,7 @@
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     processFile(e.target.result);
+                    isDataLoaded = true;
                 };
                 reader.readAsText(file);
             }
@@ -98,6 +100,11 @@
         }
 
         function updateOutput() {
+            if (!isDataLoaded) {
+                document.getElementById('output').value = "Output will appear here...";
+                return;
+            }
+
             const includeAt = document.getElementById('includeAt').checked;
             const showNames = document.getElementById('showNames').checked;
             const format = document.querySelector('input[name="format"]:checked').value;
