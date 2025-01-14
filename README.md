@@ -33,6 +33,9 @@ I provide a downloadable Python version, as well as a web app version for ease o
 ### Python Interface
 ![Main Interface](https://raw.githubusercontent.com/AdamWaldie/Arma3ModstingGenerator/refs/heads/main/coverimage.png)
 
+### Web App Interface
+![Main Interface](https://raw.githubusercontent.com/AdamWaldie/Arma3ModstingGenerator/refs/heads/main/coverimage2.png)
+
 ## Credits
 Developed by Waldo.
 
