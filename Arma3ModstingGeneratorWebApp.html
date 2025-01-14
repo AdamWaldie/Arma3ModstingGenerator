@@ -64,6 +64,7 @@
                 reader.onload = function(e) {
                     processFile(e.target.result);
                     isDataLoaded = true;
+                    updateOutput(); // Update the output box immediately after loading
                 };
                 reader.readAsText(file);
             }
@@ -95,7 +96,6 @@
                 }
             });
 
-            updateOutput();
             updateSanitizedMods();
         }
 
