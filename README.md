@@ -11,7 +11,7 @@ I provide a downloadable Python version, as well as a web app version for ease o
 ## Features
 - Extract mod IDs and display names from Arma 3 preset files.
 - Sanitize mod names for compatibility with file systems.
-- Highlight mods that required sanitization.
+- Highlight mods that required sanitization so that you can validate any which may have or need sanitation to work in your command line.
 - Toggle between mod names or IDs in the output.
 - Save the extracted list in various formats (newline, semicolon, or comma-separated).
 
@@ -32,6 +32,9 @@ I provide a downloadable Python version, as well as a web app version for ease o
 ## Screenshots
 ### Python Interface
 ![Main Interface](https://raw.githubusercontent.com/AdamWaldie/Arma3ModstingGenerator/refs/heads/main/coverimage.png)
+
+### Web App Interface
+![Main Interface](https://raw.githubusercontent.com/AdamWaldie/Arma3ModstingGenerator/refs/heads/main/coverimage2.png)
 
 ## Credits
 Developed by Waldo.
