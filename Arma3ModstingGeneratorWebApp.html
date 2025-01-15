@@ -73,7 +73,7 @@
         function sanitizeFilename(name) {
             const invalidChars = /[<>:"/\\|?*]/g;
             const unescapedName = name.replace(/&amp;/g, '&');
-            return unescapedName.replace(invalidChars, '_');
+            return unescapedName.replace(invalidChars, '-');
         }
 
         function processFile(content) {

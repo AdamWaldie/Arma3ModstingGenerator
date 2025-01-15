@@ -9,7 +9,7 @@ invalid_chars = r'[<>:"/\\|?*]'
 
 def sanitize_filename(name):
     sanitized_name = unescape(name)  # Decode HTML entities like &amp; to &
-    sanitized_name = re.sub(invalid_chars, '_', sanitized_name)
+    sanitized_name = re.sub(invalid_chars, '-', sanitized_name)
     return sanitized_name
 
 
