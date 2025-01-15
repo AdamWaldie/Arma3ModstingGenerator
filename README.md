@@ -29,14 +29,14 @@ Ive added an example bat for how you might handle downloading workshop items and
 4. **Save List**: Click "Save List" to download the output as a text file.
 
 ## Live Web App
-[Try the tool here!](https://adamwaldie.github.io/Arma3ModstingGenerator/Arma3ModstingGeneratorWebApp)
+[Try the tool here!](https://adamwaldie.github.io/Arma3ModstringGenerator/Arma3ModstingGeneratorWebApp)
 
 ## Screenshots
 ### Python Interface
-![Python Interface](https://raw.githubusercontent.com/AdamWaldie/Arma3ModstingGenerator/refs/heads/main/coverimage.png)
+![Python Interface](https://raw.githubusercontent.com/AdamWaldie/Arma3ModstringGenerator/refs/heads/main/coverimage.png)
 
 ### Web App Interface
-![Web App Interface](https://raw.githubusercontent.com/AdamWaldie/Arma3ModstingGenerator/refs/heads/main/coverimage2.png)
+![Web App Interface](https://raw.githubusercontent.com/AdamWaldie/Arma3ModstringGenerator/refs/heads/main/coverimage2.png)
 
 ## Credits
 Developed by Waldo.
